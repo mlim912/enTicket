@@ -11,7 +11,9 @@
     "enTicket": {
       "commandName": "Project",
       "dotnetRunMessages": true,
+      "compilerOptions.moduleResolution": "node",
       "launchBrowser": true,
+      "launchUrl": "Movies",
       "applicationUrl": "https://localhost:7145;http://localhost:5145",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
