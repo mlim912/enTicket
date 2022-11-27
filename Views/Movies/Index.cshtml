@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Movie>
 
 @{
-    ViewData["Title"] = "List of Movies";
+    ViewData["Title"] = "Movies";
 }
 
 <div class="row">
@@ -10,26 +10,29 @@
         <div class="col-md-4 col-xs-6 border-primary mb-3">
             <div class="card mb-3" style="max-width: 540px;">
                 <div class="row g-0">
-                    <div class="col-md-12">
-                        <div class="card-header text-white bg-info">
-                            <p class="card-text">
-                                <h5 class="card-title">
-                                    @item.Name
-                                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-                                    {
-                                        <a class="text-white float-end" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i></a>
-                                    }
-                                     
-                                    
-                                </h5>
-                            </p>
+                    <!-- Card -->
+                    <div class="card">
+
+                        <!-- Card image -->
+                        <div class="view overlay">
+                            <img src="@item.ImgURL" width="100%" alt="@item.Name"/>                          
+                            <a href="#!">
+                                <div class="mask rgba-white-slight"></div>
+                            </a>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <img src="@item.ImgURL" width="100%" alt="@item.Name">
-                    </div>
-                    <div class="col-md-6">
+
+                        <!-- Card content -->
                         <div class="card-body">
+
+                            <!-- Title -->
+                            <h4 class="card-title">
+                                @item.Name
+                                @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                                {
+                                    <a class="text-primary float-end" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i></a>
+                                }
+                            </h4>
+                            <!-- Text -->
                             <p class="card-text">@item.Description</p>
                             <p class="card-text"><b>Cinema: </b>@item.Cinema.Name </p>
                             <p class="card-text"><b>Category: </b>@item.MovieCategory</p>
@@ -50,24 +53,28 @@
                                     <span class="badge bg-primary text-white">UPCOMING</span>
                                 }
                             </p>
+                            <!-- Button -->
+                            <div class="col-md-12">
+                                <div class="card-footer bg-white">
+                                    <p class="card-text">
+                                        <a class="btn btn-light btn-rounded float-end " asp-action="Details" asp-route-id="@item.Id">
+                                            <i class="bi bi-eye-fill"></i> Show Details
+                                        </a>
+                                        <a class="btn btn-light btn-rounded @((DateTime.Now > item.EndDate) ? "disabled" : "")"
+                                       asp-controller="Orders"
+                                       asp-action="AddItemToShoppingCart"
+                                       asp-route-id="@item.Id">
+                                            <i class="bi bi-cart-plus"></i> Add to Cart (Price @item.Price.ToString("c"))
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
 
                         </div>
+
                     </div>
-                    <div class="col-md-12">
-                        <div class="card-footer ">
-                            <p class="card-text">
-                                <a class="btn btn-outline-primary float-end" asp-action="Details" asp-route-id="@item.Id">
-                                    <i class="bi bi-eye-fill"></i> Show Details
-                                </a>
-                                <a class="btn btn-success text-white @((DateTime.Now > item.EndDate) ? "disabled" : "")"
-                               asp-controller="Orders"
-                               asp-action="AddItemToShoppingCart"
-                               asp-route-id="@item.Id">
-                                    <i class="bi bi-cart-plus"></i> Add to Cart (Price @item.Price.ToString("c"))
-                                </a>
-                            </p>
-                        </div>
-                    </div>
+                    <!-- Card -->
+                     
                 </div>
             </div>
         </div>

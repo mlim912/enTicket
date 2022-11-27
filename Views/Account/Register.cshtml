@@ -5,51 +5,86 @@
     ViewData["Title"] = "Sign up for a new account";
 }
 
-<div class="row">
-    <div class="col-md-6 offset-3">
-        <p>
-            <h4>Sign up for a new account</h4>
-        </p>
+<section class="vh-100" style="background-color: #c092d1;">
+    <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-lg-12 col-xl-11">
+                <div class="card text-black" style="border-radius: 25px;">
+                    <div class="card-body p-md-5">
+                        <div class="row justify-content-center">
+                            <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                                @if (TempData["Error"] != null)
+                                {
+                                    <div class="col-md-12 alert alert-danger">
+                                        <span><b>Sorry!</b> - @TempData["Error"] </span>
+                                    </div>
+                                }
 
-        @if (TempData["Error"] != null)
-        {
-            <div class="col-md-12 alert alert-danger">
-                <span><b>Sorry!</b> - @TempData["Error"] </span>
-            </div>
-        }
+                                <p class="text-center h1 fw-bold mb-1 mx-1 mx-md-4 mt-4">Sign up</p>
+                                <p class="text-center text-secondary h3 mb-3 mx-1 mx-md-4 mt-0">and, take it easy with enTicket</p>
+                                 
+                                <form class="mx-1 mx-md-4" asp-action="Register">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-        <div class="row">
-            <div class="col-md-8 offset-2">
-                <form asp-action="Register">
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                     
 
-                    <div class="form-group p-1">
-                        <label asp-for="FullName" class="control-label"></label>
-                        <input asp-for="FullName" class="form-control" />
-                        <span asp-validation-for="FullName" class="text-danger"></span>
-                    </div>
-                    <div class="form-group p-1">
-                        <label asp-for="EmailAddress" class="control-label"></label>
-                        <input asp-for="EmailAddress" class="form-control" />
-                        <span asp-validation-for="EmailAddress" class="text-danger"></span>
-                    </div>
-                    <div class="form-group p-1">
-                        <label asp-for="Password" class="control-label"></label>
-                        <input asp-for="Password" class="form-control" />
-                        <span asp-validation-for="Password" class="text-danger"></span>
-                    </div>
-                    <div class="form-group p-1">
-                        <label asp-for="ConfirmPassword" class="control-label"></label>
-                        <input asp-for="ConfirmPassword" class="form-control" />
-                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-                    </div>
+                                    <div class="d-flex flex-row align-items-center mb-4">
+                                         
+                                        <div class="form-outline flex-fill mb-0">
+                                            <label asp-for="FullName" class="control-label"></label>
+                                            <input asp-for="FullName" class="form-control" />
+                                            <span asp-validation-for="FullName" class="text-danger"></span>
+                                        </div>
+                                    </div>
 
-                    <div class="form-group p-1">
-                        <input class="btn btn-outline-success float-right" type="submit" value="Sign up" />
-                        <a class="btn btn-outline-secondary" asp-controller="Movies" asp-action="Index">Cancel</a>
+                                    <div class="d-flex flex-row align-items-center mb-4">
+                                        
+                                        <div class="form-outline flex-fill mb-0">
+                                            <label asp-for="EmailAddress" class="control-label"></label>
+                                            <input asp-for="EmailAddress" class="form-control" />
+                                            <span asp-validation-for="EmailAddress" class="text-danger"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex flex-row align-items-center mb-4">
+                                         
+                                        <div class="form-outline flex-fill mb-0">
+                                            <label asp-for="Password" class="control-label"></label>
+                                            <input asp-for="Password" class="form-control" />
+                                            <span asp-validation-for="Password" class="text-danger"></span> 
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex flex-row align-items-center mb-4">
+                                         
+                                        <div class="form-outline flex-fill mb-0">
+                                            <label asp-for="ConfirmPassword" class="control-label"></label>
+                                            <input asp-for="ConfirmPassword" class="form-control" />
+                                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex flex-row align-items-center mb-4">
+                                        <input class="form-outline flex-fill mb-0 btn btn-light btn-lg btn-block" type="submit" value="Sign up" />
+                                    </div>
+                                    <p class="mb-5 pb-lg-2" style="color: #393f81;">
+                                        Already have an account? <a asp-controller="Account" asp-action="Login"
+                                                                  style="color: #393f81;">Log in here</a>
+                                    </p>
+
+                                </form>
+
+                            </div>
+                            <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+
+                                <img src="/logo.png"
+                                     class="img-fluid" alt="Sample image">
+
+                            </div>
+                        </div>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</section>

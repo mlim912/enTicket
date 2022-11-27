@@ -5,41 +5,68 @@
     ViewData["Title"] = "Log in to your account";
 }
 
-<div class="row">
-    <div class="col-md-6 offset-3">
-        <p>
-            <h4>Log in to your account</h4>
-        </p>
 
-        @if (TempData["Error"] != null)
-        {
-            <div class="col-md-12 alert alert-danger">
-                <span><b>Sorry!</b> - @TempData["Error"] </span>
+<section class="vh-100" style="background-color: #92a1cd;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-xl-10">
+        <div class="card" style="border-radius: 1rem;">
+          <div class="row g-0">
+            <div class="col-md-6 col-lg-5 d-none d-md-block">
+              <img src="https://i.pinimg.com/564x/35/89/9e/35899e753a9cd3ed3da076aa6c43b0d4.jpg"
+                alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
             </div>
-        }
+            <div class="col-md-6 col-lg-7 d-flex align-items-center">
+              <div class="card-body p-4 p-lg-5 text-black">
+                 @if (TempData["Error"] != null)
+                    {
+                        <div class="col-md-12 alert alert-danger">
+                            <span><b>Sorry!</b> - @TempData["Error"] </span>
+                        </div>
+                    }
 
-        <div class="row">
-            <div class="col-md-8 offset-2">
                 <form asp-action="Login">
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-                    <div class="form-group p-1">
-                        <label asp-for="EmailAddress" class="control-label"></label>
-                        <input asp-for="EmailAddress" class="form-control" />
-                        <span asp-validation-for="EmailAddress" class="text-danger"></span>
-                    </div>
-                    <div class="form-group p-1">
-                        <label asp-for="Password" class="control-label"></label>
-                        <input asp-for="Password" class="form-control" />
-                        <span asp-validation-for="Password" class="text-danger"></span>
-                    </div>
+                  
 
-                    <div class="form-group p-1">
-                        <input class="btn btn-outline-success float-end" type="submit" value="Log in" />
-                        <a class="btn btn-outline-secondary" asp-controller="Movies" asp-action="Index">Cancel</a>
-                    </div>
+                 <p class="text-center h1 fw-bold mb-2 mx-1 mx-md-4 mt-2">               
+                     <img src="/logo.png" alt="enticket's logo" width="150" height="150" />
+                 </p>
+                  <p class="text-center h2 fw-bold mb-4 mx-1 mx-md-4 mt-4">               
+                     Log in to get your ticket
+                 </p>
+                      
+                     
+
+                  <div asp-validation-summary="ModelOnly" class="text-danger"></div> 
+
+                  <div class="form-outline mb-4">
+                    <label asp-for="EmailAddress" class="control-label"></label>
+                    <input asp-for="EmailAddress" class="form-control" />
+                    <span asp-validation-for="EmailAddress" class="text-danger"></span>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                     <label asp-for="Password" class="control-label"></label>
+                     <input asp-for="Password" class="form-control" />
+                     <span asp-validation-for="Password" class="text-danger"></span>
+                  </div>
+
+                  <div class="form-group">
+                     <input class="btn btn-light btn-lg btn-block float-end w-100" type="submit" value="Log in" />
+                                     
+                  </div>
+                   
+                  <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <a asp-controller="Account" asp-action="Register"
+                      style="color: #393f81;">Register here</a></p>
+                   
                 </form>
+
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
+  </div>
+</section>

@@ -3,21 +3,21 @@
 
 @if (!User.Identity.IsAuthenticated)
 {
-    <a class="btn btn-outline-success my-2 my-sm-0" asp-controller="Account" asp-action="Login">
+    <a class="text" style="text-decoration:none" asp-controller="Account" asp-action="Login">
         <i class="bi bi-box-arrow-in-right"></i> Log in
     </a>
-    <span style="padding: 5px;"></span>
+    <span style="padding: 10px;"></span>
 
-    <a class="btn btn-outline-primary my-2 my-sm-0" asp-controller="Account" asp-action="Register">
+    <a class="text" style="text-decoration:none; color:mediumpurple" asp-controller="Account" asp-action="Register">
         <i class="bi bi-person-plus"></i> Register
     </a>
 }
 else
 {
-
+    <div class="btn-group" role="group" aria-label="Basic example">
     @*User profile section*@
     <div class="dropdown">
-        <button class="btn btn-outline-success dropdown-toggle" type="button" id="profile-btn" data-bs-toggle="dropdown"
+        <button class="btn dropdown-toggle" type="button" id="profile-btn" data-bs-toggle="dropdown"
             aria-expanded="false">
             <i class="bi bi-person-badge"></i> Hello @UserManager.GetUserName(User)
         </button>
@@ -42,8 +42,9 @@ else
     </div>
     <span style="padding: 5px;"></span>
     <form asp-controller="Account" asp-action="Logout">
-        <button class="btn btn-outline-danger my-2 my-sm-0">
+        <button class="btn text-danger my-2 my-sm-0">
             <i class="bi bi-box-arrow-in-right"></i> Log out
         </button>
     </form>
+    </div> 
 }
